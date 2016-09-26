@@ -16,5 +16,6 @@ PlayerMoveToMessage::~PlayerMoveToMessage()
 void PlayerMoveToMessage::process()
 {
 	gpGame->getPlayerUnit()->arrive(mPos);
+	//std::cout << mPos.getX() << mPos.getY();
 }
 

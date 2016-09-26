@@ -33,6 +33,8 @@ public:
 	Vector2D getVelocity() const { return mVelocity; };
 	float getMaxAcceleration() const { return mMaxAcceleration; };
 	void setVelocity( const Vector2D& velocity ){ mVelocity = velocity; };
+	//void setID(int id) { mID = id; };
+	//int getID() { return mID; };
 
 	virtual void setNewOrientation();//face the direction you are moving
 
@@ -57,5 +59,8 @@ private:
 	float mMaxAcceleration;
 
 	void setSteering( Steering* pSteering );
+
+	//Additional unit ID
+	//int mID;
 
 };

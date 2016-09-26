@@ -36,6 +36,7 @@ Game::Game()
 	,mpFont(NULL)
 	,mpSample(NULL)
 	,mBackgroundBufferID(INVALID_ID)
+	,mpUnitManager(NULL)
 	//,mSmurfBufferID(INVALID_ID)
 {
 }
@@ -71,6 +72,7 @@ bool Game::init()
 
 	mpGraphicsBufferManager = new GraphicsBufferManager();
 	mpSpriteManager = new SpriteManager();
+	mpUnitManager = new UnitManager();
 
 	//startup a lot of allegro stuff
 
@@ -176,22 +178,26 @@ bool Game::init()
 	{
 		pEnemyArrow = mpSpriteManager->createAndManageSprite( AI_ICON_SPRITE_ID, pAIBuffer, 0, 0, pAIBuffer->getWidth(), pAIBuffer->getHeight() );
 	}
-
+	
 	//setup units
 	Vector2D pos( 0.0f, 0.0f );
 	Vector2D vel( 0.0f, 0.0f );
-	mpUnit = new KinematicUnit( pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f );
-	
+	//mpUnit = new KinematicUnit( pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f );
+	mpUnitManager->addUnit(pos, pArrowSprite);
+
 	Vector2D pos2( 1000.0f, 500.0f );
 	Vector2D vel2( 0.0f, 0.0f );
-	mpAIUnit = new KinematicUnit( pEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f );
+	//mpAIUnit = new KinematicUnit( pEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f );
 	//give steering behavior
-	mpAIUnit->dynamicArrive( mpUnit ); 
+	//mpAIUnit->dynamicArrive( mpUnit ); 
+	mpUnitManager->addUnit(pos2, pArrowSprite);
+	mpUnitManager->getUnit(1)->dynamicArrive(mpUnitManager->getUnit(0));
 
 	Vector2D pos3( 500.0f, 500.0f );
-	mpAIUnit2 = new KinematicUnit( pEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f );
+	//mpAIUnit2 = new KinematicUnit( pEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f );
 	//give steering behavior
-	mpAIUnit2->dynamicSeek( mpUnit );  
+	//mpAIUnit2->dynamicSeek( mpUnit );  
+	
 
 	return true;
 }
@@ -199,12 +205,14 @@ bool Game::init()
 void Game::cleanup()
 {
 	//delete units
+	/*
 	delete mpUnit;
 	mpUnit = NULL;
 	delete mpAIUnit;
 	mpAIUnit = NULL;
 	delete mpAIUnit2;
 	mpAIUnit2 = NULL;
+	*/
 
 	//delete the timers
 	delete mpLoopTimer;
@@ -222,6 +230,8 @@ void Game::cleanup()
 	mpSpriteManager = NULL;
 	delete mpMessageManager;
 	mpMessageManager = NULL;
+	delete mpUnitManager;
+	mpUnitManager = NULL;
 
 	al_destroy_sample(mpSample);
 	mpSample = NULL;
@@ -247,18 +257,25 @@ void Game::beginLoop()
 void Game::processLoop()
 {
 	//update units
+	/*
 	mpUnit->update( LOOP_TARGET_TIME/1000.0f );
 	mpAIUnit->update( LOOP_TARGET_TIME/1000.0f );
 	mpAIUnit2->update( LOOP_TARGET_TIME/1000.0f );
+	*/
+
+	mpUnitManager->updateUnits(mpLoopTimer->getElapsedTime());
 	
 	//draw background
 	Sprite* pBackgroundSprite = mpSpriteManager->getSprite( BACKGROUND_SPRITE_ID );
 	pBackgroundSprite->draw( *(mpGraphicsSystem->getBackBuffer()), 0, 0 );
-
+	/*
 	//draw units
 	mpUnit->draw( GRAPHICS_SYSTEM->getBackBuffer() );
 	mpAIUnit->draw( GRAPHICS_SYSTEM->getBackBuffer() );
 	mpAIUnit2->draw( GRAPHICS_SYSTEM->getBackBuffer() );
+	*/
+
+	mpUnitManager->drawUnits(mpGraphicsSystem, GRAPHICS_SYSTEM->getBackBuffer());
 
 	mpMessageManager->processMessagesForThisframe();
 
