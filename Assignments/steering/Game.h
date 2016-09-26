@@ -8,6 +8,7 @@
 #include <allegro5/allegro_audio.h>
 #include <string>
 #include "UnitManager.h"
+#include "InputManager.h"
 
 class GraphicsSystem;
 class GraphicsBuffer;
@@ -17,6 +18,7 @@ class KinematicUnit;
 class GameMessageManager;
 class UnitManager;
 class Timer;
+class InputManager;
 
 const IDType BACKGROUND_SPRITE_ID = 0;
 const IDType PLAYER_ICON_SPRITE_ID = 1;
@@ -24,7 +26,7 @@ const IDType AI_ICON_SPRITE_ID = 2;
 
 const float LOOP_TARGET_TIME = 33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
 
-class Game:public Trackable
+class Game :public Trackable
 {
 public:
 	Game();
@@ -46,6 +48,10 @@ public:
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
 	inline ALLEGRO_FONT* getFont() const { return mpFont; };
 	inline UnitManager* getUnitManager() const { return mpUnitManager; };
+	inline InputManager* getInputManager() const { return mpInputManager; };
+	inline bool getShouldEnd() const { return mShouldExit; };
+	inline void setShouldEnd(bool end) { mShouldExit = end; };
+	//static Game* getGame() { return gpGame; };
 	
 	inline KinematicUnit* getPlayerUnit() { return mpUnitManager->getUnit(0); };//should be someplace else
 	/*
@@ -59,6 +65,7 @@ private:
 	SpriteManager* mpSpriteManager;
 	GameMessageManager* mpMessageManager;
 	UnitManager* mpUnitManager;
+	InputManager* mpInputManager;
 	Timer* mpLoopTimer;
 	Timer* mpMasterTimer;
 	bool mShouldExit;
@@ -69,6 +76,8 @@ private:
 	IDType mBackgroundBufferID;
 	IDType mPlayerIconBufferID;
 	IDType mEnemyIconBufferID;
+
+	//static Game* gpGame;
 
 	/*
 	KinematicUnit* mpUnit;

@@ -1,3 +1,6 @@
-﻿  Game.cpp
+﻿  main.cpp
+  InputManager.cpp
+  Game.cpp
+  Generating Code...
   water.vcxproj -> C:\Users\justi\EGP-410\Assignments\steering\Debug\steering.exe
   water.vcxproj -> C:\Users\justi\EGP-410\Assignments\steering\Debug\steering.pdb (Full PDB)

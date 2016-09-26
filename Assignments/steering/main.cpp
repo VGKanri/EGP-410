@@ -7,6 +7,13 @@
  *	2011
  *
  */
+
+/*		ASSIGNMENT 1
+		Justin Mulkin
+		EGP - 410 Game AI
+		Code  for InputManager and UnitManager both referenced from the group final project
+			made with Matthew Makuch for EGP - 310 and used with permission
+*/
 #define ALLEGRO_USE_CONSOLE
 
 #include <stdio.h>
