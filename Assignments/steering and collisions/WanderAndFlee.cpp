@@ -7,7 +7,7 @@ WanderAndFlee::WanderAndFlee(KinematicUnit *pMover, KinematicUnit* pTarget, bool
 	mpTarget(pTarget),
 	mIsWander(isWander)
 {
-	mApplyDirectly = true;
+	mApplyDirectly = false;
 }
 
 Steering* WanderAndFlee::getSteering()

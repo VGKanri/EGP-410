@@ -1,3 +1,4 @@
-﻿  WanderAndSeek.cpp
-  water.vcxproj -> C:\Users\Justin\EGP-410\Assignments\steering and collisions\Debug\steering.exe
-  water.vcxproj -> C:\Users\Justin\EGP-410\Assignments\steering and collisions\Debug\steering.pdb (Full PDB)
+﻿  UnitManager.cpp
+c:\users\justi\egp-410\assignments\steering and collisions\unitmanager.cpp(61): warning C4018: '<': signed/unsigned mismatch
+  water.vcxproj -> C:\Users\justi\EGP-410\Assignments\steering and collisions\Debug\steering.exe
+  water.vcxproj -> C:\Users\justi\EGP-410\Assignments\steering and collisions\Debug\steering.pdb (Full PDB)

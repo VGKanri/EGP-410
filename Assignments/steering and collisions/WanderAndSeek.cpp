@@ -7,7 +7,7 @@ WanderAndSeek::WanderAndSeek(KinematicUnit *pMover, KinematicUnit* pTarget, bool
 	mpTarget(pTarget),
 	mIsWander(isWander)
 {
-	mApplyDirectly = true;
+	mApplyDirectly = false;
 }
 
 Steering* WanderAndSeek::getSteering()
@@ -16,7 +16,7 @@ Steering* WanderAndSeek::getSteering()
 	{
 		mLinear = mpMover->getOrientationAsVector() * mpMover->getMaxVelocity();
 		mAngular = mpMover->getOrientation() * (genRandomBinomial() * MAX_WANDER_ROTATION);
-		std::cout << mIsWander;
+		//std::cout << mIsWander;
 		return this;
 	}
 	else
@@ -26,12 +26,12 @@ Steering* WanderAndSeek::getSteering()
 		mLinear.normalize();
 		mLinear *= mpMover->getMaxVelocity();
 		mAngular = 0;
-		std::cout << mIsWander;
+		//std::cout << mIsWander;
 		return this;
 	}
 }
 
-Steering* WanderAndSeek::setIsWander(bool isWander)
+void WanderAndSeek::setIsWander(bool isWander)
 {
-
+	mIsWander = isWander;
 }

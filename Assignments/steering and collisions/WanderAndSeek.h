@@ -11,6 +11,7 @@ public:
 	~WanderAndSeek() {};
 
 	virtual Steering* getSteering();
+	void setIsWander(bool wander);
 
 private:
 	KinematicUnit* mpMover;

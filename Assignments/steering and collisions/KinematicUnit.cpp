@@ -81,7 +81,7 @@ void KinematicUnit::update(float time)
 		GRAPHICS_SYSTEM->wrapCoordinates(mPosition);
 	}
 	//set the orientation to match the direction of travel
-	//setNewOrientation();	
+	setNewOrientation();	
 }
 
 //private - deletes old Steering before setting

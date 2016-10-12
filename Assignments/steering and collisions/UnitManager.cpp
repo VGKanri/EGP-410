@@ -37,7 +37,7 @@ void UnitManager::addUnit(Vector2D loc, Sprite* sprite)
 
 void UnitManager::addUnit(Vector2D loc, Sprite* sprite, bool flee)
 {
-	KinematicUnit* tmpUnit = new KinematicUnit(sprite, loc, 0.0f, 0.0f, 0.0f, 0.0F, 0.0F);
+	KinematicUnit* tmpUnit = new KinematicUnit(sprite, loc, 0.0f, 0.0f, 0.0f, 180.0F, 100.0F);
 
 	mvpUnitList.push_back(tmpUnit);
 }
@@ -102,26 +102,46 @@ void UnitManager::updateUnits(float timePassed)
 	{
 		mvpUnitList.at(i)->update(timePassed);
 	}
-
+	
 	for (int i = 0; i < vectorSize; i++)
 	{
 		if (checkWallCollisions(mvpUnitList.at(i)) == 1)
 		{
 			mvpUnitList.at(i)->setPosition(Vector2D(mvpUnitList.at(i)->getPosition().getX() + 26, mvpUnitList.at(i)->getPosition().getY()));
+			if (mvpUnitList.at(i) != 0)
+			{
+				mvpUnitList.at(i)->setVelocity(Vector2D(10.0f, 0.0f));
+			}
 		}
 		else if (checkWallCollisions(mvpUnitList.at(i)) == 2)
 		{
 			mvpUnitList.at(i)->setPosition(Vector2D(mvpUnitList.at(i)->getPosition().getX() - 26, mvpUnitList.at(i)->getPosition().getY()));
+			if (mvpUnitList.at(i) != 0)
+			{
+				mvpUnitList.at(i)->setOrientation(1.0f);
+				mvpUnitList.at(i)->setVelocity(Vector2D(-10.0f, 0.0f));
+			}
 		}
 		else if (checkWallCollisions(mvpUnitList.at(i)) == 3)
 		{
 			mvpUnitList.at(i)->setPosition(Vector2D(mvpUnitList.at(i)->getPosition().getX(), mvpUnitList.at(i)->getPosition().getY() + 26));
+			if (mvpUnitList.at(i) != 0)
+			{
+				mvpUnitList.at(i)->setOrientation(1.0f);
+				mvpUnitList.at(i)->setVelocity(Vector2D(0.0f, 10.0f));
+			}
 		}
 		else if (checkWallCollisions(mvpUnitList.at(i)) == 4)
 		{
 			mvpUnitList.at(i)->setPosition(Vector2D(mvpUnitList.at(i)->getPosition().getX() + 26, mvpUnitList.at(i)->getPosition().getY() - 26));
+			if (mvpUnitList.at(i) != 0)
+			{
+				mvpUnitList.at(i)->setOrientation(1.0f);
+				mvpUnitList.at(i)->setVelocity(Vector2D(0.0f, -10.0f));
+			}
 		}
 	}
+	
 
 	targetAvoidance();
 	
@@ -156,40 +176,39 @@ void UnitManager::targetAvoidance()
 					
 					if (mvpUnitList.at(i)->getFlee() == true)
 					{
-						mvpUnitList.at(i)->getSteering()->setIsWander(false);
-						std::cout << "flee:true wander: false";
+						Steering* nSteering = new WanderAndFlee(mvpUnitList.at(i), mvpUnitList.at(0), false);
+						mvpUnitList.at(i)->setSteering(nSteering);
 
 					}
 
 					else if (mvpUnitList.at(i)->getFlee() == false)
 					{
-						std::cout << "flee:false wander: false";
-
-						mvpUnitList.at(i)->getSteering()->setIsWander(false);
+						Steering* nSteering = new WanderAndSeek(mvpUnitList.at(i), mvpUnitList.at(0), false);
+						mvpUnitList.at(i)->setSteering(nSteering);
 					}
 					
 
 				}
-				if (j != i && checkLocations(mvpUnitList.at(i)->getPosition(), mvpUnitList.at(j)->getPosition(), false) 
+				else if (j != i && checkLocations(mvpUnitList.at(i)->getPosition(), mvpUnitList.at(j)->getPosition(), false) 
 					&& mvpUnitList.at(i) != 0 && mvpUnitList.at(j) != 0 && j != 1 && j != 2 && j != 3 && j != 4
 					&& i != 1 && i != 2 && i != 3 && i != 4)
 				{
-					//mvpUnitList.at(i)->dynamicFlee(mvpUnitList.at(j));
+					mvpUnitList.at(i)->dynamicFlee(mvpUnitList.at(j));
 				}
-				if (j != i && !checkLocations(mvpUnitList.at(i)->getPosition(), mvpUnitList.at(j)->getPosition(), true) 
+				else if (j != i && !checkLocations(mvpUnitList.at(i)->getPosition(), mvpUnitList.at(j)->getPosition(), true) 
 					&& mvpUnitList.at(i) != 0 && j != 1 && j != 2 && j != 3 && j != 4
 					&& i != 1 && i != 2 && i != 3 && i != 4)
 				{
 					if (mvpUnitList.at(i)->getFlee() == true)
 					{
-						mvpUnitList.at(i)->getSteering()->setIsWander(true);
-						std::cout << "flee:true wander: true";
+						Steering* nSteering = new WanderAndFlee(mvpUnitList.at(i), mvpUnitList.at(0), true);
+						mvpUnitList.at(i)->setSteering(nSteering);
 					}
 					
 					else if (mvpUnitList.at(i)->getFlee() == false)
 					{
-						mvpUnitList.at(i)->getSteering()->setIsWander(true);
-						std::cout << "flee:false wander: true";
+						Steering* nSteering = new WanderAndSeek(mvpUnitList.at(i), mvpUnitList.at(0), true);
+						mvpUnitList.at(i)->setSteering(nSteering);
 					}
 				}
 			}
