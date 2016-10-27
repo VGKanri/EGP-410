@@ -1,0 +1,21 @@
+﻿  InputManager.cpp
+  GraphicsSystem.cpp
+  GameMessageManager.cpp
+  AddUnitMessageWanderAndSeek.cpp
+  AddUnitMessageWanderAndFlee.cpp
+  Generating Code...
+  Compiling...
+  main.cpp
+  WanderAndSeek.cpp
+  WanderAndFlee.cpp
+  RemoveUnitMessage.cpp
+  PlayerMoveToMessage.cpp
+  KinematicWanderSteering.cpp
+  KinematicUnit.cpp
+  Game.cpp
+  ExitGameMessage.cpp
+  AddUnitMessageSeek.cpp
+  AddUnitMessageArrive.cpp
+  Generating Code...
+  water.vcxproj -> C:\Users\Student\EGP-410\Assignments\Flock Behaviour\Debug\steering.exe
+  water.vcxproj -> C:\Users\Student\EGP-410\Assignments\Flock Behaviour\Debug\steering.pdb (Full PDB)
