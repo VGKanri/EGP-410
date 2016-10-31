@@ -1,17 +1,17 @@
-﻿DeanLib.lib(Vector2D.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in AddUnitMessageArrive.obj
-DeanLib.lib(Vector2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in AddUnitMessageArrive.obj
+﻿DeanLib.lib(Vector2D.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in AddBoidMessage.obj
+DeanLib.lib(Vector2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in AddBoidMessage.obj
 DeanLib.lib(Vector2D.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
-DeanLib.lib(Timer.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in AddUnitMessageArrive.obj
-DeanLib.lib(Timer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in AddUnitMessageArrive.obj
-DeanLib.lib(Trackable.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in AddUnitMessageArrive.obj
-DeanLib.lib(Trackable.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in AddUnitMessageArrive.obj
-DeanLib.lib(MemoryTracker.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in AddUnitMessageArrive.obj
-DeanLib.lib(MemoryTracker.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in AddUnitMessageArrive.obj
-DeanLib.lib(PerformanceTracker.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in AddUnitMessageArrive.obj
-DeanLib.lib(PerformanceTracker.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in AddUnitMessageArrive.obj
+DeanLib.lib(Timer.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in AddBoidMessage.obj
+DeanLib.lib(Timer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in AddBoidMessage.obj
+DeanLib.lib(Trackable.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in AddBoidMessage.obj
+DeanLib.lib(Trackable.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in AddBoidMessage.obj
+DeanLib.lib(MemoryTracker.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in AddBoidMessage.obj
+DeanLib.lib(MemoryTracker.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in AddBoidMessage.obj
+DeanLib.lib(PerformanceTracker.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in AddBoidMessage.obj
+DeanLib.lib(PerformanceTracker.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in AddBoidMessage.obj
 LINK : warning LNK4098: defaultlib 'MSVCRTD' conflicts with use of other libs; use /NODEFAULTLIB:library
 DeanLib.lib(MemoryTracker.obj) : error LNK2001: unresolved external symbol __imp___invalid_parameter
 DeanLib.lib(PerformanceTracker.obj) : error LNK2001: unresolved external symbol __imp___invalid_parameter
 DeanLib.lib(MemoryTracker.obj) : error LNK2001: unresolved external symbol __imp___CrtDbgReportW
 DeanLib.lib(PerformanceTracker.obj) : error LNK2001: unresolved external symbol __imp___CrtDbgReportW
-C:\Users\Justin\EGP-410\Assignments\steering and collisions\Release\steering.exe : fatal error LNK1120: 2 unresolved externals
+C:\Users\Justin\EGP-410\Assignments\Flock Behaviour\Release\steering.exe : fatal error LNK1120: 2 unresolved externals

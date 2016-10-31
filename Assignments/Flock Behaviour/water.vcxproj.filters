@@ -40,9 +40,6 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Steering.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\Util</Filter>
     </ClCompile>
@@ -83,6 +80,30 @@
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
     <ClCompile Include="WanderAndFlee.cpp">
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
+    <ClCompile Include="CylinderCollider.cpp">
+      <Filter>Source Files\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="CohesionSteering.cpp">
+      <Filter>Source Files\Steering\BoidSteering</Filter>
+    </ClCompile>
+    <ClCompile Include="AlignmentSteering.cpp">
+      <Filter>Source Files\Steering\BoidSteering</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupAlignmentSteering.cpp">
+      <Filter>Source Files\Steering\BoidSteering</Filter>
+    </ClCompile>
+    <ClCompile Include="StateManager.cpp">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="AddBoidMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="SeparationSteering.cpp">
+      <Filter>Source Files\Steering\BoidSteering</Filter>
+    </ClCompile>
+    <ClCompile Include="Steering.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
   </ItemGroup>
@@ -171,6 +192,27 @@
     <ClInclude Include="WanderAndFlee.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
+    <ClInclude Include="CylinderCollider.h">
+      <Filter>Header Files\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="CohesionSteering.h">
+      <Filter>Header Files\Steering\BoidSteering</Filter>
+    </ClInclude>
+    <ClInclude Include="SeparationSteering.h">
+      <Filter>Header Files\Steering\BoidSteering</Filter>
+    </ClInclude>
+    <ClInclude Include="AlignmentSteering.h">
+      <Filter>Header Files\Steering\BoidSteering</Filter>
+    </ClInclude>
+    <ClInclude Include="GroupAlignmentSteering.h">
+      <Filter>Header Files\Steering\BoidSteering</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="AddBoidMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -208,6 +250,12 @@
     </Filter>
     <Filter Include="Source Files\Units">
       <UniqueIdentifier>{820b8d07-ae99-4b13-b15d-e6e6c1e3fbbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Steering\BoidSteering">
+      <UniqueIdentifier>{dcfa930a-fef0-49de-915b-15031533a812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Steering\BoidSteering">
+      <UniqueIdentifier>{1681283d-c606-4e7a-9aee-93542dfe3c9c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

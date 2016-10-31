@@ -38,6 +38,7 @@ Game::Game()
 	,mBackgroundBufferID(INVALID_ID)
 	,mpUnitManager(NULL)
 	,mpInputManager(NULL)
+	,mpStateManager(NULL)
 	//,mSmurfBufferID(INVALID_ID)
 {
 }
@@ -74,6 +75,7 @@ bool Game::init()
 	mpGraphicsBufferManager = new GraphicsBufferManager();
 	mpSpriteManager = new SpriteManager();
 	mpUnitManager = new UnitManager();
+	mpStateManager = new StateManager();
 
 	//startup a lot of allegro stuff
 
@@ -226,6 +228,9 @@ void Game::cleanup()
 	delete mpInputManager;
 	mpInputManager = NULL;
 
+	delete mpStateManager;
+	mpStateManager = NULL;
+
 	al_destroy_sample(mpSample);
 	mpSample = NULL;
 	al_destroy_font(mpFont);
@@ -257,6 +262,7 @@ void Game::processLoop()
 	pBackgroundSprite->draw( *(mpGraphicsSystem->getBackBuffer()), 0, 0 );
 
 	mpInputManager->update();
+	mpStateManager->update();
 
 	mpUnitManager->drawUnits(mpGraphicsSystem, GRAPHICS_SYSTEM->getBackBuffer());
 

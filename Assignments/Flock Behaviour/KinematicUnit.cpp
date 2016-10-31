@@ -10,6 +10,7 @@
 #include "DynamicSeekSteering.h"
 #include "DynamicArriveSteering.h"
 #include "WanderAndSeek.h"
+#include "GroupAlignmentSteering.h"
 
 using namespace std;
 
@@ -142,5 +143,13 @@ void KinematicUnit::setPosition(Vector2D pos)
 {
 	mPosition.setX(pos.getX());
 	mPosition.setY(pos.getY());
+}
+
+void KinematicUnit::boidBehaviour()
+{
+	GroupAlignmentSteering* pBoidSteering = new GroupAlignmentSteering(this, gpGame->getStateManager()->getAlignWeight()
+		, gpGame->getStateManager()->getSepWeight(), gpGame->getStateManager()->getCohWeight());
+
+	setSteering(pBoidSteering);
 }
 

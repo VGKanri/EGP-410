@@ -37,8 +37,7 @@ void UnitManager::addUnit(Vector2D loc, Sprite* sprite)
 
 void UnitManager::addUnit(Vector2D loc, Sprite* sprite, bool flee)
 {
-	KinematicUnit* tmpUnit = new KinematicUnit(sprite, loc, 0.0f, 0.0f, 0.0f, 180.0F, 100.0F);
-
+	KinematicUnit* tmpUnit = new KinematicUnit(sprite, loc, 100.0f, 0.0f, 100.0f, 180.0F, 100.0F);
 	mvpUnitList.push_back(tmpUnit);
 }
 
@@ -107,43 +106,40 @@ void UnitManager::updateUnits(float timePassed)
 	{
 		if (checkWallCollisions(mvpUnitList.at(i)) == 1)
 		{
-			mvpUnitList.at(i)->setPosition(Vector2D(mvpUnitList.at(i)->getPosition().getX() + 26, mvpUnitList.at(i)->getPosition().getY()));
+			//mvpUnitList.at(i)->setPosition(Vector2D(mvpUnitList.at(i)->getPosition().getX() + 26, mvpUnitList.at(i)->getPosition().getY()));
 			if (mvpUnitList.at(i) != 0)
 			{
-				mvpUnitList.at(i)->setVelocity(Vector2D(10.0f, 0.0f));
+				mvpUnitList.at(i)->setVelocity(Vector2D(-(mvpUnitList.at(i)->getVelocity().getX() * 1.5), (mvpUnitList.at(i)->getVelocity().getY() * 1.5)));
 			}
 		}
 		else if (checkWallCollisions(mvpUnitList.at(i)) == 2)
 		{
-			mvpUnitList.at(i)->setPosition(Vector2D(mvpUnitList.at(i)->getPosition().getX() - 26, mvpUnitList.at(i)->getPosition().getY()));
+			//mvpUnitList.at(i)->setPosition(Vector2D(mvpUnitList.at(i)->getPosition().getX() - 26, mvpUnitList.at(i)->getPosition().getY()));
 			if (mvpUnitList.at(i) != 0)
 			{
-				mvpUnitList.at(i)->setOrientation(1.0f);
-				mvpUnitList.at(i)->setVelocity(Vector2D(-10.0f, 0.0f));
+				mvpUnitList.at(i)->setVelocity(Vector2D(-(mvpUnitList.at(i)->getVelocity().getX() * 1.5), (mvpUnitList.at(i)->getVelocity().getY() * 1.5)));
 			}
 		}
 		else if (checkWallCollisions(mvpUnitList.at(i)) == 3)
 		{
-			mvpUnitList.at(i)->setPosition(Vector2D(mvpUnitList.at(i)->getPosition().getX(), mvpUnitList.at(i)->getPosition().getY() + 26));
+			//mvpUnitList.at(i)->setPosition(Vector2D(mvpUnitList.at(i)->getPosition().getX(), mvpUnitList.at(i)->getPosition().getY() + 26));
 			if (mvpUnitList.at(i) != 0)
 			{
-				mvpUnitList.at(i)->setOrientation(1.0f);
-				mvpUnitList.at(i)->setVelocity(Vector2D(0.0f, 10.0f));
+				mvpUnitList.at(i)->setVelocity(Vector2D(mvpUnitList.at(i)->getVelocity().getX(), -(mvpUnitList.at(i)->getVelocity().getY() * 1.5)));
 			}
 		}
 		else if (checkWallCollisions(mvpUnitList.at(i)) == 4)
 		{
-			mvpUnitList.at(i)->setPosition(Vector2D(mvpUnitList.at(i)->getPosition().getX() + 26, mvpUnitList.at(i)->getPosition().getY() - 26));
+			//mvpUnitList.at(i)->setPosition(Vector2D(mvpUnitList.at(i)->getPosition().getX() + 26, mvpUnitList.at(i)->getPosition().getY() - 26));
 			if (mvpUnitList.at(i) != 0)
 			{
-				mvpUnitList.at(i)->setOrientation(1.0f);
-				mvpUnitList.at(i)->setVelocity(Vector2D(0.0f, -10.0f));
+				mvpUnitList.at(i)->setVelocity(Vector2D(mvpUnitList.at(i)->getVelocity().getX(), -(mvpUnitList.at(i)->getVelocity().getY() * 1.5)));
 			}
 		}
 	}
 	
 
-	targetAvoidance();
+	//targetAvoidance();
 	
 }
 
@@ -151,7 +147,7 @@ void UnitManager::drawUnits(GraphicsSystem* system, GraphicsBuffer* buffer)
 {
 	int vectorSize = mvpUnitList.size();
 
-	for (int i = 0; i < vectorSize; i++)
+	for (int i = 1; i < vectorSize; i++)
 	{
 		if (mvpUnitList.at(i) != NULL && !mvpUnitList.at(i)->getIsWall())
 		{
@@ -258,4 +254,32 @@ int UnitManager::checkWallCollisions(KinematicUnit* unit)
 	}
 
 	return 5;
+}
+
+//Updating max values of units
+void UnitManager::setMaxVelocities(float velocity)
+{
+	int vectorSize = mvpUnitList.size();
+	for ( int i = 5; i < vectorSize; ++i)
+	{
+		mvpUnitList.at(i)->setMaxVelocity(velocity);
+	}
+}
+
+void UnitManager::setRotationalVelocity(float velocity)
+{
+	int vectorSize = mvpUnitList.size();
+	for (int i = 5; i < vectorSize; ++i)
+	{
+		mvpUnitList.at(i)->setRotationalVelocity(velocity);
+	}
+}
+
+void UnitManager::setReactionRadius(float radius)
+{
+	int vectorSize = mvpUnitList.size();
+	for (int i = 5; i < vectorSize; ++i)
+	{
+		//mvpUnitList.at(i)->getSteering()->set
+	}
 }

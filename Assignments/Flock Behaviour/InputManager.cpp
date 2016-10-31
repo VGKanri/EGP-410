@@ -73,20 +73,28 @@ void InputManager::update()
 	if (inputBuffer < 0)
 	{
 
+		if (al_key_down(&keyState, ALLEGRO_KEY_I))
+		{
+			GameMessage* pMessage = new AddBoidMessage();
+			MESSAGE_MANAGER->addMessage(pMessage, 0);
+			inputBuffer = 10;
+		}
+
 		if (al_key_down(&keyState, ALLEGRO_KEY_A))
 		{
-			GameMessage* pMessage = new AddUnitMessageArrive(mpSpriteManager->getSprite(AI_ICON_SPRITE_ID));
-			MESSAGE_MANAGER->addMessage(pMessage, 0);
+			gpGame->getStateManager()->setSelectedProperty(ALIGNMENT_WEIGHT);
+			inputBuffer = 10;
+		}
+
+		if (al_key_down(&keyState, ALLEGRO_KEY_C))
+		{
+			gpGame->getStateManager()->setSelectedProperty(COHESION_WEIGHT);
 			inputBuffer = 10;
 		}
 
 		if (al_key_down(&keyState, ALLEGRO_KEY_S))
 		{
-			/*Assignment 1 code
-			GameMessage* pMessage = new AddUnitMessageSeek(mpSpriteManager->getSprite(AI_ICON_SPRITE_ID));
-			*/
-			GameMessage* pMessage = new AddUnitMessageWanderAndFlee(mpSpriteManager->getSprite(AI_ICON_SPRITE_ID));
-			MESSAGE_MANAGER->addMessage(pMessage, 0);
+			gpGame->getStateManager()->setSelectedProperty(SEPARATION_WEIGHT);
 			inputBuffer = 10;
 		}
 
@@ -103,11 +111,39 @@ void InputManager::update()
 			inputBuffer = 10;
 		}
 
-		if (al_key_down(&keyState, ALLEGRO_KEY_F))
+		if (al_key_down(&keyState, ALLEGRO_KEY_R))
 		{
-			//std::cout << "Test";
-			GameMessage* pMessage = new AddUnitMessageWanderAndSeek(mpSpriteManager->getSprite(AI_ICON_SPRITE_ID));
-			MESSAGE_MANAGER->addMessage(pMessage, 0);
+			gpGame->getStateManager()->setSelectedProperty(REACTION_RADIUS);
+			inputBuffer = 10;
+		}
+
+		if (al_key_down(&keyState, ALLEGRO_KEY_E))
+		{
+			gpGame->getStateManager()->setSelectedProperty(ROT_VELOCITY);
+			inputBuffer = 10;
+		}
+
+		if (al_key_down(&keyState, ALLEGRO_KEY_V))
+		{
+			gpGame->getStateManager()->setSelectedProperty(MAX_VELOCITY);
+			inputBuffer = 10;
+		}
+
+		if (al_key_down(&keyState, ALLEGRO_KEY_EQUALS))
+		{
+			gpGame->getStateManager()->addStat();
+			inputBuffer = 10;
+		}
+
+		if (al_key_down(&keyState, ALLEGRO_KEY_MINUS))
+		{
+			gpGame->getStateManager()->subStat();
+			inputBuffer = 10;
+		}
+
+		if (al_key_down(&keyState, ALLEGRO_KEY_LCTRL) && al_key_down(&keyState, ALLEGRO_KEY_S))
+		{
+			gpGame->getStateManager()->saveData();
 			inputBuffer = 10;
 		}
 	}

@@ -18,7 +18,7 @@
 #include "Kinematic.h"
 #include "Trackable.h"
 
-class Steering: public Trackable
+class Steering
 {
 public:
 	//constructors and destructors

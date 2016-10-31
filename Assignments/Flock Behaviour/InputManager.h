@@ -15,6 +15,7 @@
 #include "Game.h"
 #include "AddUnitMessageWanderAndSeek.h"
 #include "AddUnitMessageWanderAndFlee.h"
+#include "AddBoidMessage.h"
 
 class Game;
 

@@ -44,6 +44,7 @@ public:
 	bool getIsWall() const { return isWall; };
 	void setIsWall(bool wall) { isWall = wall; };
 	void setPosition(Vector2D pos);
+	void setMaxVelocity(float maxVel) { mMaxVelocity = maxVel; }
 
 	virtual void setNewOrientation();//face the direction you are moving
 
@@ -60,6 +61,7 @@ public:
 	void dynamicFlee( KinematicUnit* pTarget );
 	void dynamicArrive( KinematicUnit* pTarget );
 	void wanderAndSeek(KinematicUnit* pTarget);
+	void boidBehaviour();
 
 private:
 	Sprite* mpSprite;

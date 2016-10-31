@@ -10,6 +10,8 @@
 #include <string>
 #include "UnitManager.h"
 #include "InputManager.h"
+#include "timer.h"
+#include "StateManager.h"
 
 class GraphicsSystem;
 class GraphicsBuffer;
@@ -20,6 +22,7 @@ class GameMessageManager;
 class UnitManager;
 class Timer;
 class InputManager;
+class StateManager;
 
 const IDType BACKGROUND_SPRITE_ID = 0;
 const IDType PLAYER_ICON_SPRITE_ID = 1;
@@ -52,6 +55,7 @@ public:
 	inline InputManager* getInputManager() const { return mpInputManager; };
 	inline bool getShouldEnd() const { return mShouldExit; };
 	inline void setShouldEnd(bool end) { mShouldExit = end; };
+	inline StateManager* getStateManager()  { return mpStateManager; };
 	//static Game* getGame() { return gpGame; };
 	
 	inline KinematicUnit* getPlayerUnit() { return mpUnitManager->getUnit(0); };//should be someplace else
@@ -65,6 +69,7 @@ private:
 	InputManager* mpInputManager;
 	Timer* mpLoopTimer;
 	Timer* mpMasterTimer;
+	StateManager* mpStateManager;
 	bool mShouldExit;
 
 	//should be somewhere else
@@ -75,12 +80,6 @@ private:
 	IDType mEnemyIconBufferID;
 
 	//static Game* gpGame;
-
-	/*
-	KinematicUnit* mpUnit;
-	KinematicUnit* mpAIUnit;
-	KinematicUnit* mpAIUnit2;
-	*/
 };
 
 float genRandomBinomial();//range -1:1 from "Artificial Intelligence for Games", Millington and Funge

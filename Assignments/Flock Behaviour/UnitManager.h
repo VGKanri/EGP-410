@@ -50,6 +50,10 @@ public:
 	bool checkLocations(Vector2D lhs, Vector2D rhs, bool isPlayer);	//Checks if the two unit's locations are within a specified distance of each other
 	int checkWallCollisions(KinematicUnit* unit);
 
+	void setMaxVelocities(float velocity);
+	void setReactionRadius(float radius);
+	void setRotationalVelocity(float velocity);
+
 };
 
 #endif
