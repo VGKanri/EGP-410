@@ -1,7 +1,18 @@
-﻿  GameApp.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
+﻿  PathToMessage.cpp
+  PathfindingDebugContent.cpp
+  Pathfinder.cpp
+  Path.cpp
+  Node.cpp
   main.cpp
   GridPathfinder.cpp
-  game.vcxproj -> C:\Users\Justin\EGP-410\Assignments\Dijkstra A Star\Pathfinding\Debug\game.exe
-  game.vcxproj -> C:\Users\Justin\EGP-410\Assignments\Dijkstra A Star\Pathfinding\Debug\game.pdb (Full PDB)
+  GridGraph.cpp
+  Graph.cpp
+  GameMessageManager.cpp
+  GameMessage.cpp
+  GameApp.cpp
+  DepthFirstPathfinder.cpp
+  DebugDisplay.cpp
+  Connection.cpp
+  Generating Code...
+  game.vcxproj -> C:\Users\Student\EGP-410\Assignments\Dijkstra A Star\Pathfinding\Debug\game.exe
+  game.vcxproj -> C:\Users\Student\EGP-410\Assignments\Dijkstra A Star\Pathfinding\Debug\game.pdb (Full PDB)

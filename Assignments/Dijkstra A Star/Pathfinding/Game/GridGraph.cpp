@@ -66,3 +66,8 @@ void GridGraph::init()
 		}
 	}
 }
+
+int GridGraph::getSize()
+{
+	return mpGrid->getGridWidth() * mpGrid->getGridHeight();
+}

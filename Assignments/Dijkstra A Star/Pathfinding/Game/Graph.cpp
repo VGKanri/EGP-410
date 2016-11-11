@@ -53,3 +53,8 @@ Node* Graph::getNode( int index )
 		return NULL;
 	}
 }
+
+int Graph::getSize()
+{
+	return mNodes.size();
+}

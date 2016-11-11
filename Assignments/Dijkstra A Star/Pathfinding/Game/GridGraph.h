@@ -13,6 +13,8 @@ public:
 	void setGrid( Grid* pGrid ) { mpGrid = pGrid; };
 	void init();
 
+	int getSize();
+
 private:
 	Grid* mpGrid;
 };

@@ -1,6 +1,6 @@
  Editor
 
- Timestamp is 5823ad18 (Wed Nov  9 18:11:20 2016)
+ Timestamp is 58261d88 (Fri Nov 11 14:35:36 2016)
 
  Preferred load address is 00400000
 
@@ -49,15 +49,15 @@
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
- 0000:00000000       ___guard_iat_count         00000000     <absolute>
- 0000:00000000       ___guard_iat_table         00000000     <absolute>
- 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
  0000:00000000       ___safe_se_handler_count   00000000     <absolute>
  0000:00000000       ___guard_longjmp_count     00000000     <absolute>
- 0000:00000000       ___guard_fids_table        00000000     <absolute>
  0000:00000000       ___guard_fids_count        00000000     <absolute>
  0000:00000000       ___guard_longjmp_table     00000000     <absolute>
  0000:00000000       ___safe_se_handler_table   00000000     <absolute>
+ 0000:00000000       ___guard_iat_count         00000000     <absolute>
+ 0000:00000000       ___guard_iat_table         00000000     <absolute>
+ 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
+ 0000:00000000       ___guard_fids_table        00000000     <absolute>
  0000:00000100       ___guard_flags             00000100     <absolute>
  0000:00000000       ___ImageBase               00400000     <linker-defined>
  0001:00000000       __enc$textbss$begin        00401000     <linker-defined>
@@ -103,8 +103,8 @@
  0002:000055d0       ??1_Bxty@?$_String_val@U?$_Simple_types@D@std@@@std@@QAE@XZ 0042a5d0 f i Editor.obj
  0002:00005610       ??1_Container_base12@std@@QAE@XZ 0042a610 f i Editor.obj
  0002:000056a0       ??2@YAPAXIPAX@Z            0042a6a0 f i Editor.obj
- 0002:000056e0       ??_EEditor@@UAEPAXI@Z      0042a6e0 f i Editor.obj
  0002:000056e0       ??_GEditor@@UAEPAXI@Z      0042a6e0 f i Editor.obj
+ 0002:000056e0       ??_EEditor@@UAEPAXI@Z      0042a6e0 f i Editor.obj
  0002:00005770       ??_GGrid@@QAEPAXI@Z        0042a770 f i Editor.obj
  0002:00005800       ??_GGridVisualizer@@QAEPAXI@Z 0042a800 f i Editor.obj
  0002:00005890       ?_Alloc_proxy@?$_String_alloc@U?$_String_base_types@DV?$allocator@D@std@@@std@@@std@@QAEXXZ 0042a890 f i Editor.obj
@@ -140,8 +140,8 @@
  0002:00006f80       ?_Xlen@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEXXZ 0042bf80 f i Editor.obj
  0002:00006fe0       ?_Xran@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEXXZ 0042bfe0 f i Editor.obj
  0002:00007040       ?__empty_global_delete@@YAXPAX@Z 0042c040 f i Editor.obj
- 0002:00007070       ?__global_delete@@YAXPAXI@Z 0042c070 f i Editor.obj
  0002:00007070       ?__empty_global_delete@@YAXPAXI@Z 0042c070 f i Editor.obj
+ 0002:00007070       ?__global_delete@@YAXPAXI@Z 0042c070 f i Editor.obj
  0002:000070a0       ?address@?$_Wrap_alloc@V?$allocator@U_Container_proxy@std@@@std@@@std@@QBEPAU_Container_proxy@2@AAU32@@Z 0042c0a0 f i Editor.obj
  0002:00007100       ?allocate@?$_Wrap_alloc@V?$allocator@D@std@@@std@@QAEPADI@Z 0042c100 f i Editor.obj
  0002:00007160       ?allocate@?$_Wrap_alloc@V?$allocator@U_Container_proxy@std@@@std@@@std@@QAEPAU_Container_proxy@2@I@Z 0042c160 f i Editor.obj
@@ -1530,8 +1530,8 @@
  0002:00044080       __RTC_InitBase             00469080 f   MSVCRTD:_init_.obj
  0002:000440c0       __RTC_Shutdown             004690c0 f   MSVCRTD:_init_.obj
  0002:000440e0       ??1type_info@@UAE@XZ       004690e0 f   MSVCRTD:std_type_info_static.obj
- 0002:00044100       ??_Etype_info@@UAEPAXI@Z   00469100 f i MSVCRTD:std_type_info_static.obj
  0002:00044100       ??_Gtype_info@@UAEPAXI@Z   00469100 f i MSVCRTD:std_type_info_static.obj
+ 0002:00044100       ??_Etype_info@@UAEPAXI@Z   00469100 f i MSVCRTD:std_type_info_static.obj
  0002:00044140       ??3@YAXPAXI@Z              00469140 f   MSVCRTD:delete_scalar_size.obj
  0002:00044160       ??$__crt_fast_decode_pointer@PAP6AXXZ@@YAPAP6AXXZQAP6AXXZ@Z 00469160 f i MSVCRTD:utility.obj
  0002:00044190       ??$__crt_fast_encode_pointer@PAP6AXXZ@@YAPAP6AXXZQAP6AXXZ@Z 00469190 f i MSVCRTD:utility.obj
@@ -1742,20 +1742,20 @@
  0002:00047aa0       ___scrt_stub_for_acrt_initialize 0046caa0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047aa0       ___vcrt_initialize         0046caa0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047aa0       ___acrt_initialize         0046caa0 f   MSVCRTD:ucrt_stubs.obj
- 0002:00047ab0       ___vcrt_thread_attach      0046cab0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047ab0       ___acrt_thread_attach      0046cab0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047ab0       ___scrt_stub_for_acrt_thread_attach 0046cab0 f   MSVCRTD:ucrt_stubs.obj
+ 0002:00047ab0       ___vcrt_thread_attach      0046cab0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047ac0       ___acrt_thread_detach      0046cac0 f   MSVCRTD:ucrt_stubs.obj
- 0002:00047ac0       ___vcrt_thread_detach      0046cac0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047ac0       ___scrt_stub_for_acrt_thread_detach 0046cac0 f   MSVCRTD:ucrt_stubs.obj
- 0002:00047ad0       ___scrt_stub_for_acrt_uninitialize 0046cad0 f   MSVCRTD:ucrt_stubs.obj
+ 0002:00047ac0       ___vcrt_thread_detach      0046cac0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047ad0       ___vcrt_uninitialize       0046cad0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047ad0       ___acrt_uninitialize       0046cad0 f   MSVCRTD:ucrt_stubs.obj
+ 0002:00047ad0       ___scrt_stub_for_acrt_uninitialize 0046cad0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047ae0       ___vcrt_uninitialize_critical 0046cae0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047ae0       ___acrt_uninitialize_critical 0046cae0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047ae0       ___scrt_stub_for_acrt_uninitialize_critical 0046cae0 f   MSVCRTD:ucrt_stubs.obj
- 0002:00047af0       __is_c_termination_complete 0046caf0 f   MSVCRTD:ucrt_stubs.obj
  0002:00047af0       ___scrt_stub_for_is_c_termination_complete 0046caf0 f   MSVCRTD:ucrt_stubs.obj
+ 0002:00047af0       __is_c_termination_complete 0046caf0 f   MSVCRTD:ucrt_stubs.obj
  0003:00000000       ___xc_a                    00475000     MSVCRTD:initializers.obj
  0003:00000438       ___xc_z                    00475438     MSVCRTD:initializers.obj
  0003:0000053c       ___xi_a                    0047553c     MSVCRTD:initializers.obj
@@ -1827,7 +1827,7 @@
  0003:00001a50       ??_C@_08HHJKBNGC@cour?4ttf?$AA@ 00476a50     CommonPathfindingLib:Game.obj
  0003:00001a5c       ??_C@_0CE@KEIEBNEM@ttf?5font?5file?5not?5loaded?5properl@ 00476a5c     CommonPathfindingLib:Game.obj
  0003:00001a88       ??_C@_0BN@GJEDGGAG@Primitives?5addon?5not?5added?$CB?6?$AA@ 00476a88     CommonPathfindingLib:Game.obj
- 0003:00001ab0       ??_C@_1LM@KCBGIKLH@?$AAc?$AA?3?$AA?2?$AAu?$AAs?$AAe?$AAr?$AAs?$AA?2?$AAj?$AAu?$AAs?$AAt?$AAi?$AAn?$AA?2?$AAe?$AAg?$AAp?$AA?9?$AA4?$AA1?$AA0?$AA?2?$AAa?$AAs?$AAs?$AAi?$AAg?$AAn?$AAm?$AAe@ 00476ab0     CommonPathfindingLib:Game.obj
+ 0003:00001ab0       ??_C@_1LO@COPDGCHO@?$AAc?$AA?3?$AA?2?$AAu?$AAs?$AAe?$AAr?$AAs?$AA?2?$AAs?$AAt?$AAu?$AAd?$AAe?$AAn?$AAt?$AA?2?$AAe?$AAg?$AAp?$AA?9?$AA4?$AA1?$AA0?$AA?2?$AAa?$AAs?$AAs?$AAi?$AAg?$AAn?$AAm@ 00476ab0     CommonPathfindingLib:Game.obj
  0003:00001b94       ??_C@_1BK@FCDNEEDD@?$AAs?$AAt?$AAa?$AAr?$AAt?$AA?5?$AA?$DM?$AA?$DN?$AA?5?$AAe?$AAn?$AAd?$AA?$AA@ 00476b94     CommonPathfindingLib:Game.obj
  0003:00001bb8       __real@4000000000000000    00476bb8     CommonPathfindingLib:Game.obj
  0003:00001bc4       __real@46fffe00            00476bc4     CommonPathfindingLib:Game.obj
