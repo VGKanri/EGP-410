@@ -8,6 +8,7 @@
 #include <vector>
 #include <algorithm>
 #include <queue>
+#include <xutility>
 
 Dijkstra::Dijkstra(GridGraph* pGraph)
 :GridPathfinder(dynamic_cast<GridGraph*>(pGraph))
@@ -23,10 +24,11 @@ const Path& Dijkstra::findPath(Node* pFrom, Node* pTo)
 	//Setting the performance tracker to check the performance of the algorithm
 	gpPerformanceTracker->clearTracker("path");
 	gpPerformanceTracker->startTracking("path");
-	/*
-	//Setting up list of nodes to visit
+
+	//std::queue<Node*> nodesToVisit;
 	std::list<Node*> nodesToVisit;
-	nodesToVisit.push_front(pFrom);
+	nodesToVisit.push_back(pFrom);
+	pFrom->setPrevNodeId(pFrom->getId());
 
 #ifdef VISUALIZE_PATH
 	mVisitedNodes.clear();
@@ -34,48 +36,76 @@ const Path& Dijkstra::findPath(Node* pFrom, Node* pTo)
 #endif
 
 	mPath.clear();
-
-	Node* pCurrentNode = NULL;
-	bool toNodeAdded = false;
-
-	while (pCurrentNode != pTo && nodesToVisit.size() > 0)
-	{
-
-	}
-	*/
-
-	//Setting up the list of nodes
-	std::queue<Node*> nodesToVisit;
-	nodesToVisit.push(pFrom);
+	mShortPath.clear();
 
 	std::vector<int> distance;
 	std::vector<Node*> previous;
 
-	//For each node in the graph
-	for (int i = 0; i < mpGraph->getSize(); ++i)
-	{
-		distance.at(i) = INFINITY;
-		previous.at(i) = mpGraph->getNode(i);
+	//Current node being processed
+	Node* current = NULL;
 
-		nodesToVisit.push(mpGraph->getNode(i));
-	}
-
-	//Distance from the first node to the first node is 0
-	distance.at(0) = 0;
-
-	Node* current;
+	//Checking if the node that you are searching to has been added to the queue yet
+	bool endNode = false;
 
 	//While the queue of nodes to visit isn't empty
-	while (!nodesToVisit.empty())
+	while (nodesToVisit.size() > 0 && current != pTo)
 	{
+		//Process what the current node is and add it to the path.
 		current = nodesToVisit.front();
-		nodesToVisit.pop();
+		nodesToVisit.pop_back();
+		mPath.addNode(current);
+
+		//Getting the list of connections for the current node 
+		std::vector<Connection*> connectionVector = mpGraph->getConnections(current->getId());
 
 		//For each of the current node's neightbors
-		for (int i = 0; i < 4; ++i) //CHANGE THIS FROM 4 TO ACCOUNT FOR EDGE NODES
+		for (int i = 0; i < connectionVector.size(); ++i) 
 		{
-			
+			//Getting the current connection
+			Connection* currentConnection = connectionVector[i];
+
+			Node* tmpNode = connectionVector[i]->getToNode();
+
+			if (!endNode && !mPath.containsNode(tmpNode)
+				&& std::find(nodesToVisit.begin(), nodesToVisit.end(), tmpNode) == nodesToVisit.end())
+				//&& std::find(nodesToVisit.front(), nodesToVisit.back(), tmpNode) == nodesToVisit.back())
+			{
+				//Setting the previous node ID
+				tmpNode->setPrevNodeId(current->getId());
+
+				nodesToVisit.push_back(tmpNode);
+				if (tmpNode == pTo)
+					endNode = true;
+
+				std::cout << endNode;
+
+#ifdef VISUALIZE_PATH
+				mVisitedNodes.push_back(tmpNode);
+#endif
+			}
+		}
+
+		//If the goal has been reached go backwards through the nodes and determine path taken
+		if (endNode)
+		{
+			Node* tmpNode = pTo;
+			bool done = false;
+			while (!done)
+			{
+				mShortPath.push_back(tmpNode);
+
+				//If the start node is added, set up to break out of loop.
+				if (tmpNode == pFrom)
+					done = true;
+
+				tmpNode = tmpNode->getPrevNode();
+			}
 		}
 	}
-	
+
+	//Ending performance tracking and returning the path
+	gpPerformanceTracker->stopTracking("path");
+	mTimeElapsed = gpPerformanceTracker->getElapsedTime("path");
+
+	return mPath;
 }

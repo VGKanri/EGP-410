@@ -1,18 +1,4 @@
-﻿  PathToMessage.cpp
-  PathfindingDebugContent.cpp
-  Pathfinder.cpp
-  Path.cpp
-  Node.cpp
-  main.cpp
-  GridPathfinder.cpp
-  GridGraph.cpp
-  Graph.cpp
-  GameMessageManager.cpp
-  GameMessage.cpp
-  GameApp.cpp
-  DepthFirstPathfinder.cpp
-  DebugDisplay.cpp
-  Connection.cpp
-  Generating Code...
-  game.vcxproj -> C:\Users\Student\EGP-410\Assignments\Dijkstra A Star\Pathfinding\Debug\game.exe
-  game.vcxproj -> C:\Users\Student\EGP-410\Assignments\Dijkstra A Star\Pathfinding\Debug\game.pdb (Full PDB)
+﻿  Dijkstra.cpp
+c:\users\justi\egp-410\assignments\dijkstra a star\pathfinding\game\dijkstra.cpp(62): warning C4018: '<': signed/unsigned mismatch
+  game.vcxproj -> C:\Users\justi\EGP-410\Assignments\Dijkstra A Star\Pathfinding\Debug\game.exe
+  game.vcxproj -> C:\Users\justi\EGP-410\Assignments\Dijkstra A Star\Pathfinding\Debug\game.pdb (Full PDB)

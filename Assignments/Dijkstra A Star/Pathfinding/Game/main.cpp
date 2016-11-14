@@ -23,12 +23,14 @@
 #include <PerformanceTracker.h>
 
 PerformanceTracker* gpPerformanceTracker = NULL;
+GameApp* gpGameApp = NULL;
 
 int main(void)
 {
 	gpPerformanceTracker = new PerformanceTracker();
 
 	gpGame = new GameApp();
+	gpGameApp = dynamic_cast<GameApp*>(gpGame);
 
 	gpGame->init();
 

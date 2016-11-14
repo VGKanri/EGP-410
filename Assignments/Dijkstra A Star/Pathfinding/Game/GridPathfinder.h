@@ -23,6 +23,8 @@ public:
 protected:
 	std::vector<Node*> mVisitedNodes;
 	GridVisualizer* mpVisualizer;
+
+	std::vector<Node*> mShortPath;
 #endif
 
 	double mTimeElapsed;
