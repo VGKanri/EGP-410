@@ -1,3 +1,4 @@
 ﻿  GameApp.cpp
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
   game.vcxproj -> C:\Users\justi\EGP-410\Assignments\Dijkstra A Star\Pathfinding\Debug\game.exe
   game.vcxproj -> C:\Users\justi\EGP-410\Assignments\Dijkstra A Star\Pathfinding\Debug\game.pdb (Full PDB)

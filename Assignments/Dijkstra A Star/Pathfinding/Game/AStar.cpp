@@ -20,6 +20,7 @@ AStar::AStar(GridGraph* pGraph)
 
 AStar::~AStar()
 {
+
 }
 
 const Path& AStar::findPath(Node* pFrom, Node* pTo)

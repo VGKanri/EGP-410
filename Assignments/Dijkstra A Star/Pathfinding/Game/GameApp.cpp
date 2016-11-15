@@ -103,17 +103,14 @@ void GameApp::cleanup()
 	delete mpGridGraph;
 	mpGridGraph = NULL;
 
-	delete mpPathfinder;
-	mpPathfinder = NULL;
+	delete mpAStar;
+	mpAStar = NULL;
+
+	delete mpDijkstra;
+	mpDijkstra = NULL;
 
 	delete mpDebugDisplay;
 	mpDebugDisplay = NULL;
-
-	//delete mpAStar;
-	//mpAStar = NULL;
-
-	//delete mpDijkstra;
-	//mpDijkstra = NULL;
 }
 
 void GameApp::beginLoop()

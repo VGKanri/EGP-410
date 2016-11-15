@@ -17,6 +17,7 @@ Dijkstra::Dijkstra(GridGraph* pGraph)
 
 Dijkstra::~Dijkstra()
 {
+
 }
 
 const Path& Dijkstra::findPath(Node* pFrom, Node* pTo)
