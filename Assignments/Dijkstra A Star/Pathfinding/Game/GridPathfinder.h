@@ -20,11 +20,10 @@ public:
 	//just for visualization
 public:
 	void drawVisualization( Grid* pGrid, GraphicsBuffer* pDest );
+	void centerLines();
 protected:
 	std::vector<Node*> mVisitedNodes;
 	GridVisualizer* mpVisualizer;
-
-	std::vector<Node*> mShortPath;
 #endif
 
 	double mTimeElapsed;

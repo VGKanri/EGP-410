@@ -27,8 +27,8 @@ const Path& Dijkstra::findPath(Node* pFrom, Node* pTo)
 
 	//std::queue<Node*> nodesToVisit;
 	std::list<Node*> nodesToVisit;
-	nodesToVisit.push_back(pFrom);
 	pFrom->setPrevNodeId(pFrom->getId());
+	nodesToVisit.push_back(pFrom);
 
 #ifdef VISUALIZE_PATH
 	mVisitedNodes.clear();
@@ -52,7 +52,7 @@ const Path& Dijkstra::findPath(Node* pFrom, Node* pTo)
 	{
 		//Process what the current node is and add it to the path.
 		current = nodesToVisit.front();
-		nodesToVisit.pop_back();
+		nodesToVisit.pop_front();
 		mPath.addNode(current);
 
 		//Getting the list of connections for the current node 
@@ -68,7 +68,6 @@ const Path& Dijkstra::findPath(Node* pFrom, Node* pTo)
 
 			if (!endNode && !mPath.containsNode(tmpNode)
 				&& std::find(nodesToVisit.begin(), nodesToVisit.end(), tmpNode) == nodesToVisit.end())
-				//&& std::find(nodesToVisit.front(), nodesToVisit.back(), tmpNode) == nodesToVisit.back())
 			{
 				//Setting the previous node ID
 				tmpNode->setPrevNodeId(current->getId());
@@ -76,8 +75,6 @@ const Path& Dijkstra::findPath(Node* pFrom, Node* pTo)
 				nodesToVisit.push_back(tmpNode);
 				if (tmpNode == pTo)
 					endNode = true;
-
-				std::cout << endNode;
 
 #ifdef VISUALIZE_PATH
 				mVisitedNodes.push_back(tmpNode);
@@ -90,9 +87,11 @@ const Path& Dijkstra::findPath(Node* pFrom, Node* pTo)
 		{
 			Node* tmpNode = pTo;
 			bool done = false;
+			mShortPath.clear();
+
 			while (!done)
 			{
-				mShortPath.push_back(tmpNode);
+				mShortPath.addNode(tmpNode);
 
 				//If the start node is added, set up to break out of loop.
 				if (tmpNode == pFrom)

@@ -20,6 +20,7 @@
 #include "DebugDisplay.h"
 #include "PathfindingDebugContent.h"
 #include "Dijkstra.h"
+#include "AStar.h"
 
 #include <fstream>
 #include <vector>
@@ -64,7 +65,11 @@ bool GameApp::init()
 	//init the nodes and connections
 	mpGridGraph->init();
 
-	mpPathfinder = new Dijkstra(mpGridGraph);
+	mpDijkstra = new Dijkstra(mpGridGraph);
+	mpAStar = new AStar(mpGridGraph);
+
+	mpPathfinder = mpDijkstra;
+	bool mIsDijkstra = true;
 
 	//load buffers
 	mpGraphicsBufferManager->loadBuffer( BACKGROUND_ID, "wallpaper.bmp");
@@ -103,6 +108,12 @@ void GameApp::cleanup()
 
 	delete mpDebugDisplay;
 	mpDebugDisplay = NULL;
+
+	//delete mpAStar;
+	//mpAStar = NULL;
+
+	//delete mpDijkstra;
+	//mpDijkstra = NULL;
 }
 
 void GameApp::beginLoop()
@@ -129,18 +140,67 @@ void GameApp::processLoop()
 	ALLEGRO_MOUSE_STATE mouseState;
 	al_get_mouse_state( &mouseState );
 
+	ALLEGRO_KEYBOARD_STATE keyboardState;
+	al_get_keyboard_state(&keyboardState);
+
 	if( al_mouse_button_down( &mouseState, 1 ) )//left mouse click
 	{
-		static Vector2D lastPos( 0.0f, 0.0f );
-		Vector2D pos( mouseState.x, mouseState.y );
-		if( lastPos.getX() != pos.getX() || lastPos.getY() != pos.getY() )
-		{
-			GameMessage* pMessage = new PathToMessage( lastPos, pos );
-			mpMessageManager->addMessage( pMessage, 0 );
+		mFirstPos = Vector2D(mouseState.x, mouseState.y);
 
-			lastPos = pos;
+		GameMessage* pMessage = new PathToMessage(mFirstPos, mSecondPos);
+		mpMessageManager->addMessage(pMessage, 0);
+
+	}
+
+	if (al_mouse_button_down(&mouseState, 2))
+	{
+		mSecondPos = Vector2D(mouseState.x, mouseState.y);
+
+		GameMessage* pMessage = new PathToMessage(mFirstPos, mSecondPos);
+		mpMessageManager->addMessage(pMessage, 0);
+	}
+
+	if (al_key_down(&keyboardState, ALLEGRO_KEY_A))
+	{
+		if (mIsDijkstra)
+		{
+			flipPathfinding();
+
+			GameMessage* pMessage = new PathToMessage(mFirstPos, mSecondPos);
+			mpMessageManager->addMessage(pMessage, 0);
 		}
 	}
+
+	if (al_key_down(&keyboardState, ALLEGRO_KEY_D))
+	{
+		if (!mIsDijkstra)
+		{
+			flipPathfinding();
+
+			GameMessage* pMessage = new PathToMessage(mFirstPos, mSecondPos);
+			mpMessageManager->addMessage(pMessage, 0);
+		}
+	}
+
+	//Drawing Text
+
+	Vector2D text1pos = gpGameApp->getGrid()->getULCornerOfSquare(gpGameApp->
+		getGrid()->getSquareIndexFromPixelXY((int)mFirstPos.getX(), 
+		(int)mFirstPos.getY()));
+
+	Vector2D text2pos = gpGameApp->getGrid()->getULCornerOfSquare(gpGameApp->
+		getGrid()->getSquareIndexFromPixelXY((int)mSecondPos.getX(),
+		(int)mSecondPos.getY()));
+
+	al_draw_text(mpFont, al_map_rgb(0, 0, 0),
+		text1pos.getX(),
+		text1pos.getY(),
+		ALLEGRO_ALIGN_LEFT, "S");
+
+	al_draw_text(mpFont, al_map_rgb(0, 0, 0),
+		text2pos.getX(),
+		text2pos.getY(),
+		ALLEGRO_ALIGN_LEFT, "G");
 
 	//should be last thing in processLoop
 	Game::processLoop();
@@ -149,4 +209,19 @@ void GameApp::processLoop()
 bool GameApp::endLoop()
 {
 	return Game::endLoop();
+}
+
+//Flips the pathfinding algorithm if necessary
+void GameApp::flipPathfinding()
+{
+	if (mIsDijkstra)
+	{
+		mpPathfinder = mpAStar;
+		mIsDijkstra = false;
+	}
+	else
+	{
+		mpPathfinder = mpDijkstra;
+		mIsDijkstra = true;
+	}
 }

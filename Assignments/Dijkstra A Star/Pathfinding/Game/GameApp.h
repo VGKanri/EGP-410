@@ -8,6 +8,7 @@ Champlain College
 */
 
 #include "Game.h"
+#include "Vector2D.h"
 
 //forward declarations
 class GraphicsBuffer;
@@ -43,6 +44,11 @@ public:
 	inline GridPathfinder* getPathfinder() { return mpPathfinder; };
 	inline Grid* getGrid() { return mpGrid; };
 	inline GridGraph* getGridGraph() { return mpGridGraph; };
+
+	inline bool getIsDijkstra() { return mIsDijkstra; };
+	inline void setIsDijkstra(bool isDijkstra) { mIsDijkstra = isDijkstra; };
+
+	void flipPathfinding();
 private:
 	GameMessageManager* mpMessageManager;
 	Grid* mpGrid;
@@ -50,7 +56,14 @@ private:
 	GridGraph* mpGridGraph;
 	DebugDisplay* mpDebugDisplay;
 
+	GridPathfinder* mpDijkstra;
+	GridPathfinder* mpAStar;
+
 	GridPathfinder* mpPathfinder;
 
+	Vector2D mFirstPos;
+	Vector2D mSecondPos;
+
+	bool mIsDijkstra;
 };
 

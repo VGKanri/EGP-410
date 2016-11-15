@@ -81,6 +81,9 @@
     <ClInclude Include="DebugDisplay.h">
       <Filter>Header Files\Debug</Filter>
     </ClInclude>
+    <ClInclude Include="AStar.h">
+      <Filter>Header Files\pathfinding</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -130,6 +133,9 @@
     </ClCompile>
     <ClCompile Include="PathToMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="AStar.cpp">
+      <Filter>Source Files\pathfinding</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

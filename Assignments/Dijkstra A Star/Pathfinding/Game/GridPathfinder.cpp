@@ -1,10 +1,13 @@
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
 #include "GridPathfinder.h"
 #include "GridGraph.h"
 #include "GridVisualizer.h"
+#include "Grid.h"
 #include "Path.h"
 #include "Game.h"
 #include "GraphicsBuffer.h"
+#include "GameApp.h"
 
 GridPathfinder::GridPathfinder( GridGraph* pGraph )
 :Pathfinder(pGraph)
@@ -56,5 +59,23 @@ void GridPathfinder::drawVisualization( Grid* pGrid, GraphicsBuffer* pDest )
 	}
 
 	mpVisualizer->draw(*pDest);
+
+	centerLines();
+}
+#endif
+
+//Function to draw center lines between each node
+#ifdef VISUALIZE_PATH
+void GridPathfinder::centerLines()
+{
+	float lineOffset = gpGameApp->getGrid()->getSquareSize() / 2; //Gets the offset for the lines
+
+	for (int i = 0; i < mShortPath.getNumNodes() - 1; ++i)
+	{
+		Vector2D firstPos = gpGameApp->getGrid()->getULCornerOfSquare(mShortPath.peekNode(i)->getId());
+		Vector2D secondPos = gpGameApp->getGrid()->getULCornerOfSquare(mShortPath.peekNode(i + 1)->getId());
+
+		al_draw_line(firstPos.getX() + lineOffset, firstPos.getY() + lineOffset, secondPos.getX() + lineOffset, secondPos.getY() + lineOffset, al_map_rgb(255, 255, 255), 5);
+	}
 }
 #endif

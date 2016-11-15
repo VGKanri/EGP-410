@@ -19,8 +19,10 @@ public:
 
 	virtual const Path& findPath( Node* pFrom, Node* pTo ) = 0;
 
+	Path& getPath() { return mShortPath; };
+
 protected:
 	Graph* mpGraph;
 	Path mPath;  //cached version of the calculated path
-	
+	Path mShortPath;
 };

@@ -20,6 +20,9 @@ public:
 	void addNode( Node* pNode );
 	void clear();//remove all nodes
 
+	inline Node* getFirst() { return mNodes.at(0); };
+	inline Node* getLast() { return mNodes.at(mNodes.size()); };
+
 private:
 	std::vector<Node*> mNodes;
 
